@@ -57,7 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StringBuilderHelper\PositionedStrings.csproj">
+    <ProjectReference Include="..\PositionedStrings\PositionedStrings.csproj">
       <Project>{89958302-1780-4811-8721-2ab47e6acb41}</Project>
       <Name>PositionedStrings</Name>
     </ProjectReference>
