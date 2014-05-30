@@ -14,18 +14,18 @@ namespace PositionedStrings
         /// </summary>
         /// <param name="objs"></param>
         /// <returns></returns>
-        public static string ToPositionedString(params object[] objs)
+        public static string ToString(params object[] objs)
         {
             if (objs == null) throw new ArgumentNullException("obj");
 
             var sb = new StringBuilder();
             foreach (var obj in objs)
-                sb.AppendLine(ToPositionedString(obj));
+                sb.AppendLine(ToString(obj));
 
             return sb.ToString();
         }
 
-        private static string ToPositionedString(object obj)
+        private static string ToString(object obj)
         {
             var type = obj.GetType();
             var properties = type.GetProperties();

@@ -26,7 +26,7 @@ namespace PositionedStrings.Tests
             headerLine2.CodigoRetorno = 12312312;
 
             // Act
-            var sb = PositionedStringBuilder.ToPositionedString(headerLine, headerLine2);
+            var sb = PositionedStringBuilder.ToString(headerLine, headerLine2);
 
             // Assert
             Console.Write(sb.ToString());
