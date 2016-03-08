@@ -4,7 +4,13 @@ Positioned Strings
 An attribute and a helper class for positioning and formating member classes into a single line of strings.
 Useful for creating batch and return bank files.
 
-##Sample:##
+##Available on NuGet Gallery##
+
+Install-Package PositionedStrings
+
+https://www.nuget.org/packages/PositionedStrings/
+
+##Sample##
 
 ###Definition Class###
 
@@ -31,9 +37,9 @@ headerLine.Code = 178955;
 headerLine.Name = "André Zanatta Borgonovo";
 
 var headerLine2 = new HeaderLine();
-headerLine2.Registro = 'A';
-headerLine2.Codigo = 78956;
-headerLine2.Nome = "John";
+headerLine2.Register = 'B';
+headerLine2.Code = 78956;
+headerLine2.Name = "John";
 
 string result = PositionedStringBuilder.ToString(headerLine, headerLine2);
 // A0000178955André Zanatta B
