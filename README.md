@@ -2,7 +2,7 @@ Positioned Strings
 ==================
 
 An attribute and a helper class for positioning and formating member classes into a single line of strings.
-Useful for creating batch and return bank files.
+Useful, for example, on creating batch and return bank files.
 
 ##Available on NuGet Gallery##
 
