@@ -3,13 +3,13 @@
   <metadata>
     <id>PositionedStrings</id>
     <title>Positioned Strings</title>
-    <version>1.0.0</version>
-    <authors>André Zanatta Borgonovo</authors>
-    <owners>André Zanatta Borgonovo</owners>
+    <version>$version$</version>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
     <projectUrl>https://github.com/azborgonovo/positioned-strings</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A helper class and attribute for creating positioned strings based on a start index, count and format definitions.</description>
-    <releaseNotes></releaseNotes>
+    <description>$description$</description>
+    <releaseNotes>Added the method ReadAllLines for converting an array of strings to an enumerable of objects</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>strings arquivo texto banco bancario</tags>
   </metadata>
