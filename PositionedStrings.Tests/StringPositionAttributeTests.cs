@@ -64,6 +64,46 @@ namespace PositionedStrings.Tests
         }
 
         [TestMethod]
+        public void PositionedStringBuilder_ToString_Extra()
+        {
+            // Arrange
+            var mov = new Mov
+            {
+                AcaoASerExecutada = 'A',
+                AnoMesReferencia = "201702",
+                CodigoConsignataria = 1,
+                CodigoEmpresa = 1,
+                CodigoRetorno = "00",
+                CodigoRubrica = "SER",
+                ContadorLinha = 1,
+                DataContratacao = "201703",
+                Descontado = 'S',
+                DescricaoRetorno = "Descasecreasc",
+                DocumentoFederal = "0589879456",
+                EspecieRubrica = "Compl",
+                FinalDesconto = "202002",
+                IdentificadorUnicoSistema = 2,
+                InicioDesconto = "201302",
+                Matricula = "2156132",
+                NumeroContratoConsignatario = "1215648as",
+                ParcelaADescontar = 1,
+                PrevisaoFimDesconto = "202002",
+                QuantidadeParcelas = 12,
+                SequenciaColaborador = 1,
+                SequenciaLancamento = 1,
+                ValorDescontado = 200,
+                ValorParcela = 200,
+                ValorTotalEmprestimo = 5000
+            };
+
+            // Act
+            var sb = PositionedStringBuilder.ToString(mov);
+
+            // Assert
+            Console.Write(sb.ToString());
+        }
+
+        [TestMethod]
         public void PositionedStringBuilder_ReadAllLines()
         {
             // Arrange
@@ -122,6 +162,23 @@ namespace PositionedStrings.Tests
                 Assert.IsTrue(ex.FormatValidationErrors.Count() == 1);
                 Assert.IsTrue(ex.FormatValidationErrors.First().Line == 1);
             }
+        }
+
+        [TestMethod]
+        public void PositionedStringBuilder_ReadAllLinesExtra()
+        {
+            // Arrange
+            string[] lines = new[]
+            {
+                "0000000000000120171155       223726817700011   SER1      Ser12               000000000016982036001201703202002000000201703010000000000000010000000000000000000000000000000000000000000XA0001500000000050000025022017IS0000000000Descontado com SUCESSO!                                                                             0000000000169820",
+                "0000000001000120171155       223726817700021   SER1      Ser13               000000000012076018001201703201808000000201703020000000000000370000000000000000000000000000000000000000000AS8446400000000020000025022017IS0000000000Descontado com SUCESSO!                                                                             0000000000120760"
+            };
+
+            // Act
+            var objects = PositionedStringBuilder.ReadAllLines<Mov>(lines);
+
+            // Assert
+            Assert.IsTrue(objects.Count() == 2);
         }
     }
 }

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Classes\DetailLine.cs" />
     <Compile Include="Classes\HeaderLine.cs" />
+    <Compile Include="Classes\Mov.cs" />
     <Compile Include="Classes\TraillerLine.cs" />
     <Compile Include="StringPositionAttributeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
