@@ -6,38 +6,67 @@ using System.Text;
 
 namespace PositionedStrings
 {
-    public static class PositionedStringBuilder
+    /// <summary>
+    /// Facade for PositionedStrings methods which convert PositionedStringsContract to a string and vice-versa.
+    /// </summary>
+    public static class PositionedStrings
     {
+        #region Public Methods
+
+        public static string[] BuildArray(params object[] objects)
+        {
+            if (objects == null) throw new ArgumentNullException("objects");
+
+            var stringsList = new List<string>();
+            foreach (var obj in objects)
+                stringsList.Add(BuildString(obj));
+
+            return stringsList.ToArray();
+        }
+
+        public static string[] BuildArray(IEnumerable<object> objects)
+        {
+            if (objects == null) throw new ArgumentNullException("objects");
+            
+            return BuildArray(objects.ToArray());
+        }
+
         /// <summary>
-        /// Build a string line with each object passed as parameter using
+        /// Build a string with each object passed as parameter using
         /// what is defined on StringPositionAttribute
         /// </summary>
-        /// <param name="objs"></param>
+        /// <param name="objects"></param>
         /// <returns></returns>
-        public static string ToString(params object[] objs)
+        public static string BuildString(params object[] objects)
         {
-            if (objs == null) throw new ArgumentNullException("obj");
+            if (objects == null) throw new ArgumentNullException("objects");
 
             var sb = new StringBuilder();
-            foreach (var obj in objs)
-                sb.AppendLine(ToString(obj));
+            foreach (var obj in objects)
+                sb.AppendLine(BuildString(obj));
 
             return sb.ToString();
         }
 
         /// <summary>
-        /// Build a string line with the list of objects passed as parameter using
+        /// Build a string with the list of objects passed as parameter using
         /// what is defined on StringPositionAttribute
         /// </summary>
-        /// <param name="objs"></param>
+        /// <param name="objects"></param>
         /// <returns></returns>
-        public static string ToString(IEnumerable<object> objs)
+        public static string BuildString(IEnumerable<object> objects)
         {
-            if (objs == null) throw new ArgumentNullException("obj");
+            if (objects == null) throw new ArgumentNullException("objects");
             
-            return ToString(objs.ToArray());
+            return BuildString(objects.ToArray());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="lines"></param>
+        /// <returns></returns>
         public static IEnumerable<T> ReadAllLines<T>(params string[] lines) where T : new()
         {
             if (lines == null) throw new ArgumentNullException("lines");
@@ -68,7 +97,18 @@ namespace PositionedStrings
             return list;
         }
 
-        private static string ToString(object obj)
+        public static IEnumerable<T> ReadAllLines<T>(IEnumerable<string> lines) where T : new()
+        {
+            if (lines == null) throw new ArgumentNullException("lines");
+
+            return ReadAllLines<T>(lines.ToArray());
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private static string BuildString(object obj)
         {
             var type = obj.GetType();
             var properties = type.GetProperties();
@@ -90,16 +130,16 @@ namespace PositionedStrings
 
                 string stringValue = value.ToString();
 
-                if (stringValue.Length < attribute.Count)
+                if (stringValue.Length < attribute.Length)
                 {
                     if (attribute.AlignRight)
-                        stringValue = stringValue.PadLeft(attribute.Count, attribute.PaddingChar);
+                        stringValue = stringValue.PadLeft(attribute.Length, attribute.PaddingChar);
                     else
-                        stringValue = stringValue.PadRight(attribute.Count, attribute.PaddingChar);
+                        stringValue = stringValue.PadRight(attribute.Length, attribute.PaddingChar);
                 }
-                else if (stringValue.Length > attribute.Count)
+                else if (stringValue.Length > attribute.Length)
                 {
-                    stringValue = stringValue.Substring(0, attribute.Count);
+                    stringValue = stringValue.Substring(0, attribute.Length);
                 }
 
                 if (attribute.StartIndex > lineValue.Length)
@@ -125,7 +165,7 @@ namespace PositionedStrings
                 string value;
                 try
                 {
-                    value = line.Substring(attribute.StartIndex, attribute.Count);
+                    value = line.Substring(attribute.StartIndex, attribute.Length);
                 }
                 catch (ArgumentOutOfRangeException ex)
                 {
@@ -158,7 +198,7 @@ namespace PositionedStrings
                     continue;
 
                 var attribute = (StringPositionAttribute)Attribute.GetCustomAttribute(property, typeof(StringPositionAttribute), false);
-                positions.Add(new KeyValuePair<int, int>(attribute.StartIndex, attribute.StartIndex + attribute.Count));
+                positions.Add(new KeyValuePair<int, int>(attribute.StartIndex, attribute.StartIndex + attribute.Length));
             }
 
             foreach (var position in positions)
@@ -175,5 +215,7 @@ namespace PositionedStrings
                 }
             }
         }
+
+        #endregion
     }
 }

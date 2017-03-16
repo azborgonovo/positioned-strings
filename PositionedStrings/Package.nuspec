@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/azborgonovo/positioned-strings</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added the method ReadAllLines for converting an array of strings to an enumerable of objects</releaseNotes>
+    <releaseNotes>PositionedStrings 2.0 come with a more consistent naming convention, new options and methods. Please check Project Site for more details.</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>strings arquivo texto banco bancario</tags>
   </metadata>

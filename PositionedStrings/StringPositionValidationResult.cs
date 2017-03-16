@@ -17,8 +17,14 @@ namespace PositionedStrings
         }
 
         public int Line { get; set; }
+
+
         public string ValidationError { get; set; }
+
+
         public Exception Exception { get; set; }
+
+
         public bool IsValid { get { return ValidationError == null && Exception == null; } }
     }
 }

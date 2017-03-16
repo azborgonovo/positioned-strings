@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PositionedStrings.Tests.Classes
 {
+    [PositionedStringsContract(ZeroBasedIndex = false)]
     public class HeaderLine
     {
         [StringPosition(0, 1)]
