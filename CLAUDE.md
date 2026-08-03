@@ -4,8 +4,7 @@ Guidance for Claude Code when working in this repository.
 
 ## Commit messages: always use Conventional Commits
 
-Every commit message in this repo **must** follow the [Conventional Commits](https://www.conventionalcommits.org/)
-format:
+Every commit message in this repo **must** follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
 
 ```
 <type>[optional scope]: <description>
@@ -15,10 +14,7 @@ format:
 [optional footer(s)]
 ```
 
-This is not just a style preference — releases are automated by [release-please](https://github.com/googleapis/release-please) (`.github/workflows/release-please.yml`),
-which parses commit history to decide the next semantic version, generate `CHANGELOG.md`, and open the
-release PR. Non-conventional commit messages are invisible to it and will be omitted from the changelog
-or cause the wrong version bump.
+This is not just a style preference — releases are automated by [release-please](https://github.com/googleapis/release-please) (`.github/workflows/release-please.yml`), which parses commit history to decide the next semantic version, generate `CHANGELOG.md`, and open the release PR. Non-conventional commit messages are invisible to it and will be omitted from the changelog or cause the wrong version bump.
 
 **Types in use here:**
 - `feat:` — a new feature (bumps minor version)
