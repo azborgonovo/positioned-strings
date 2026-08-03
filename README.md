@@ -1,18 +1,21 @@
 Positioned Strings
 ==================
 
+[![Build](https://github.com/azborgonovo/positioned-strings/actions/workflows/build.yml/badge.svg)](https://github.com/azborgonovo/positioned-strings/actions/workflows/build.yml)
+[![NuGet](https://img.shields.io/nuget/v/PositionedStrings.svg)](https://www.nuget.org/packages/PositionedStrings/)
+
 An attribute and a helper class for positioning and formating member classes into a single line of strings.
 Useful, for example, on creating batch and return bank files.
 
-##Available on NuGet Gallery##
+## Available on NuGet Gallery
 
 Install-Package PositionedStrings
 
 https://www.nuget.org/packages/PositionedStrings/
 
-##Sample##
+## Sample
 
-###Definition Class###
+### Definition Class
 
 ```
 public class HeaderLine
@@ -28,7 +31,7 @@ public class HeaderLine
 }
 ```
 
-###Using###
+### Using
 
 ```
 var headerLine = new HeaderLine();

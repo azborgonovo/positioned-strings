@@ -1,0 +1,18 @@
+<Project>
+
+  <PropertyGroup>
+    <Authors>André Zanatta Borgonovo</Authors>
+    <Company>André Zanatta Borgonovo</Company>
+    <Copyright>Copyright © André Zanatta Borgonovo</Copyright>
+    <PackageProjectUrl>https://github.com/azborgonovo/positioned-strings</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/azborgonovo/positioned-strings</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <Deterministic>true</Deterministic>
+    <LangVersion>latest</LangVersion>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+</Project>

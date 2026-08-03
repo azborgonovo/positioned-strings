@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PositionedStrings.Tests/PositionedStrings.Tests.csproj" />
+  <Project Path="PositionedStrings/PositionedStrings.csproj" />
+</Solution>

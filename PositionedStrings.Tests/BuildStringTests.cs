@@ -1,14 +1,13 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using PositionedStrings.Tests.Classes;
 using System.Collections.Generic;
 
 namespace PositionedStrings.Tests
 {
-    [TestClass]
     public class BuildStringTests
     {
-        [TestMethod]
+        [Fact]
         public void PositionedStrings_BuildString_ArrayAsParameter()
         {
             // Arrange
@@ -31,7 +30,7 @@ namespace PositionedStrings.Tests
             Console.Write(sb.ToString());
         }
 
-        [TestMethod]
+        [Fact]
         public void PositionedStrings_BuildString_ListAsParameter()
         {
             // Arrange
@@ -60,7 +59,7 @@ namespace PositionedStrings.Tests
             Console.Write(sb.ToString());
         }
 
-        [TestMethod]
+        [Fact]
         public void PositionedStrings_BuildString_Extra()
         {
             // Arrange

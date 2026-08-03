@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using PositionedStrings.Tests.Classes;
 using System.Diagnostics;
 using System.Collections;
@@ -8,10 +8,9 @@ using System.Collections.Generic;
 
 namespace PositionedStrings.Tests
 {
-    [TestClass]
     public class ReadAllLinesTests
     {
-        [TestMethod]
+        [Fact]
         public void PositionedStringBuilder_ReadAllLines()
         {
             // Arrange
@@ -25,10 +24,10 @@ namespace PositionedStrings.Tests
             var objects = PositionedStrings.ReadAllLines<HeaderLine>(lines);
 
             // Assert
-            Assert.IsTrue(objects.Count() == 2);
+            Assert.True(objects.Count() == 2);
         }
 
-        [TestMethod]
+        [Fact]
         public void PositionedStringBuilder_ReadAllLines_ShouldThrowIfMissingData()
         {
             // Arrange
@@ -45,12 +44,12 @@ namespace PositionedStrings.Tests
             }
             catch (StringPositionFormatException ex)
             {
-                Assert.IsTrue(ex.FormatValidationErrors.Count() == 1);
-                Assert.IsTrue(ex.FormatValidationErrors.First().Line == 2);
+                Assert.True(ex.FormatValidationErrors.Count() == 1);
+                Assert.True(ex.FormatValidationErrors.First().Line == 2);
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void PositionedStringBuilder_ReadAllLines_ShouldThrowIfCouldNotConvertData()
         {
             // Arrange
@@ -67,12 +66,12 @@ namespace PositionedStrings.Tests
             }
             catch (StringPositionFormatException ex)
             {
-                Assert.IsTrue(ex.FormatValidationErrors.Count() == 1);
-                Assert.IsTrue(ex.FormatValidationErrors.First().Line == 1);
+                Assert.True(ex.FormatValidationErrors.Count() == 1);
+                Assert.True(ex.FormatValidationErrors.First().Line == 1);
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void PositionedStringBuilder_ReadAllLinesExtra()
         {
             // Arrange
@@ -86,7 +85,7 @@ namespace PositionedStrings.Tests
             var objects = PositionedStrings.ReadAllLines<Mov>(lines);
 
             // Assert
-            Assert.IsTrue(objects.Count() == 2);
+            Assert.True(objects.Count() == 2);
         }
     }
 }
