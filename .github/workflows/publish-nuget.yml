@@ -1,0 +1,44 @@
+name: Publish to NuGet
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: "Git ref (tag) to build and publish"
+        required: false
+        type: string
+        default: ${{ github.ref }}
+    secrets:
+      NUGET_API_KEY:
+        required: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref }}
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build -c Release --no-restore
+
+      - name: Test
+        run: dotnet test -c Release --no-build
+
+      - name: Pack
+        run: dotnet pack PositionedStrings/PositionedStrings.csproj -c Release --no-build -o artifacts
+
+      - name: Push to NuGet.org
+        run: dotnet nuget push "artifacts/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
