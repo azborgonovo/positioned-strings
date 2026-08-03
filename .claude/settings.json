@@ -1,0 +1,14 @@
+{
+  "extraKnownMarketplaces": {
+    "ai-skills": {
+      "source": {
+        "source": "github",
+        "repo": "azborgonovo/ai-skills"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "decisions@ai-skills": true,
+    "planning@ai-skills": true
+  }
+}
